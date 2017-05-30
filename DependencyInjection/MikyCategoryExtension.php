@@ -24,5 +24,32 @@ class MikyCategoryExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+        $this->loadCategories($config['resources'], $container);
+    }
+
+    private function loadCategories(array $resources, ContainerBuilder $container)
+    {
+        foreach ($resources as $alias => $resourceConfig) {
+            $metadata = Metadata::fromAliasAndConfiguration($alias, $resourceConfig);
+
+            $resources = $container->hasParameter('miky.resources') ? $container->getParameter('miky.resources') : [];
+            $resources = array_merge($resources, [$alias => $resourceConfig]);
+            $container->setParameter('miky.resources', $resources);
+
+            DriverProvider::get($metadata)->load($container, $metadata);
+
+            if ($metadata->hasParameter('translation')) {
+                $alias = $alias.'_translation';
+                $resourceConfig = array_merge(['driver' => $resourceConfig['driver']], $resourceConfig['translation']);
+
+                $resources = $container->hasParameter('miky.resources') ? $container->getParameter('miky.resources') : [];
+                $resources = array_merge($resources, [$alias => $resourceConfig]);
+                $container->setParameter('miky.resources', $resources);
+
+                $metadata = Metadata::fromAliasAndConfiguration($alias, $resourceConfig);
+
+                DriverProvider::get($metadata)->load($container, $metadata);
+            }
+        }
     }
 }
