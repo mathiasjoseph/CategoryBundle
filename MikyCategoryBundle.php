@@ -3,6 +3,7 @@
 namespace Miky\Bundle\CategoryBundle;
 
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
+use Miky\Bundle\CategoryBundle\DependencyInjection\Compiler\RegisterCategoriesPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -15,6 +16,7 @@ class MikyCategoryBundle extends Bundle
     {
         parent::build($container);
         $this->addRegisterMappingsPass($container);
+        $container->addCompilerPass(new RegisterCategoriesPass());
     }
     /**
      * @param ContainerBuilder $container

@@ -34,23 +34,6 @@ class MikyCategoryExtension extends Extension
 
     private function loadCategories(array $categories, ContainerBuilder $container)
     {
-        $categoryProvider = $container->get("miky_category.provider.category");
-
-//        foreach ($categories as $alias => $categoryConfig) {
-//            $container->setParameter($categoryProvider->getClassParameterName($alias), $categoryConfig["class"]);
-//            if ($categoryConfig["manager"] == null){
-//                $definition = new Definition(CategoryManager::class);
-//            }else{
-//                if (!in_array(CategoryManager::class, class_implements(get_class($categoryConfig["manager"])))) {
-//                   throw new Exception(get_class($categoryConfig["manager"]) . "must be extends" . CategoryManager::class, 500);
-//                }else{
-//                    $definition = new Definition($categoryConfig["manager"]);
-//                }
-//            }
-//
-//            $definition->addArgument($container->get("doctrine.orm.entity_manager"));
-//            $definition->addArgument($container->getParameter($categoryProvider->getClassParameterName($alias)));
-//            $container->setDefinition($categoryProvider->getManagerServiceName($alias), $definition);
-//        }
+        $container->setParameter("miky_category.categories", $categories);
     }
 }

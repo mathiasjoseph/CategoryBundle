@@ -7,9 +7,10 @@
 
     <services>
         <service id="miky_category.provider.category" class="Miky\Bundle\CategoryBundle\Provider\CategoryProvider">
-            <!--<argument type="service" id="service_id" />-->
-            <!--<argument>plain_value</argument>-->
-            <!--<argument>%parameter_name%</argument>-->
+            <argument type="service" id="miky_category.category_registry" />
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
         </service>
     </services>
 
