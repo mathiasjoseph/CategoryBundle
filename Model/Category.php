@@ -9,7 +9,21 @@
 namespace Miky\Bundle\CategoryBundle\Model;
 
 
-class Category extends \Miky\Component\Category\Model\Category
+use Miky\Component\Resource\Model\ResourceInterface;
+
+class Category extends \Miky\Component\Category\Model\Category implements ResourceInterface
 {
+    /**
+     * @var mixed
+     */
+    protected $id;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
 }

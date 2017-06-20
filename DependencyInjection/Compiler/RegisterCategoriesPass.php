@@ -39,15 +39,14 @@ class RegisterCategoriesPass implements CompilerPassInterface
     }
     
     private function addServices(ContainerBuilder $container, CategoryRegistry $registry){
+
         foreach ($registry->getAll() as $alias => $metadata) {
             /** @var CategoryMetadata $metadata */
            $container->setParameter($metadata->getClassParameterId(), $metadata->getModelClass());
            $definition = new Definition(CategoryManager::class);
            $definition->addArgument($container->findDefinition("doctrine.orm.entity_manager"));
            $definition->addArgument($container->getParameter($metadata->getClassParameterId()));
-           if ($metadata->getManagerServiceId() == null){
-               $container->setDefinition($metadata->getFormattedManagerServiceId(), $definition);
-           }
+           $container->setDefinition($metadata->getManagerServiceId(), $definition);
         }
     }
 
@@ -57,12 +56,8 @@ class RegisterCategoriesPass implements CompilerPassInterface
             /** @var CategoryMetadata $metadata */
             if ($metadata->hasResource()){
                 $resource = $metadata->getResource();
-            }else{
-                $resource = array();
+                $resourceRegistry->addMethodCall('addFromAliasAndConfiguration', [$metadata->getResourceAlias(), $resource]);
             }
-
-            $resourceRegistry->addMethodCall('addFromAliasAndConfiguration', [$metadata->getResourceAlias(), $resource]);
-
         }
     }
 }

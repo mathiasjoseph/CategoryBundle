@@ -39,6 +39,10 @@ class CategoryProvider
         return $this->getManager($alias)->createEntity();
     }
 
+    public function getClass($alias){
+        return $this->registry->get($alias)->getModelClass();
+    }
+
     /**
      * @return CategoryManager $manager
      */

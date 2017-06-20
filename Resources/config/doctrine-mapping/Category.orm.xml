@@ -7,6 +7,7 @@
     <mapped-superclass name="Miky\Bundle\CategoryBundle\Model\Category">
 
         <field name="name" type="string" length="180" />
+        <field name="description" type="text" />
 
     </mapped-superclass>
 

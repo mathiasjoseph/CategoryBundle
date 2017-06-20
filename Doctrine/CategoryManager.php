@@ -18,4 +18,12 @@ class CategoryManager extends AbstractObjectManager
     public function __construct(EntityManager $em, $class){
         parent::__construct($em, $class);
     }
+
+    public function getCategories(){
+        return $this->getRepository()->findAll();
+    }
+
+    public function getCategory($id){
+        return $this->getRepository()->find($id);
+    }
 }
