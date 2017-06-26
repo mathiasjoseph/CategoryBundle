@@ -9,7 +9,6 @@
 namespace Miky\Bundle\CategoryBundle\Form\Type;
 
 
-use Miky\Bundle\CategoryBundle\Model\Category;
 use Miky\Bundle\CategoryBundle\Provider\CategoryProvider;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

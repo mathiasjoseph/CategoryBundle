@@ -9,14 +9,8 @@
 namespace Miky\Bundle\CategoryBundle\Form\Type\Admin;
 
 
-use Gaia\Bundle\FormationBundle\Model\FormationParticipant;
-use Miky\Bundle\CoreBundle\Form\Type\DateTimeType;
-use Miky\Bundle\CommercialBundle\Form\Type\ContactSheetEntityType;
-use Miky\Bundle\UserBundle\Form\Type\EmployeeEntityType;
-use Miky\Bundle\UserBundle\Form\Type\UserEntityType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -45,7 +39,8 @@ class CategoryAdminType extends AbstractType
                 "class" => $this->class,
                 "label" => "miky_category.parent_category",
                 "choice_label" => "name",
-                "placeholder" => "miky_category.no_category"
+                "placeholder" => "miky_category.no_category",
+                "required" => false
             ))
             ->add("description", TextareaType::class,array(
                 "label" => "miky_core.description"
