@@ -43,7 +43,8 @@ class CategoryAdminType extends AbstractType
                 "required" => false
             ))
             ->add("description", TextareaType::class,array(
-                "label" => "miky_core.description"
+                "label" => "miky_core.description",
+                "required" => false
             ))
 
         ;

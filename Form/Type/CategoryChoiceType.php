@@ -31,6 +31,7 @@ class CategoryChoiceType extends AbstractType
     {
         $this->categoryProvider = $categoryProvider;
     }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     }
