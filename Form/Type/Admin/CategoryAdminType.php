@@ -9,25 +9,15 @@
 namespace Miky\Bundle\CategoryBundle\Form\Type\Admin;
 
 
+use Miky\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CategoryAdminType extends AbstractType
+class CategoryAdminType  extends AbstractResourceType
 {
 
-    /**
-     * @var string
-     */
-    protected $class;
-
-    public function __construct($class)
-    {
-        $this->class = $class;
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -50,10 +40,4 @@ class CategoryAdminType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => $this->class,
-        ));
-    }
 }
