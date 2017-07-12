@@ -10,9 +10,9 @@ namespace Miky\Bundle\CategoryBundle\Doctrine;
 
 
 use Doctrine\ORM\EntityManager;
-use Miky\Bundle\CoreBundle\Doctrine\AbstractObjectManager;
+use Miky\Bundle\CoreBundle\Doctrine\BaseEntityManager;
 
-class CategoryManager extends AbstractObjectManager
+class CategoryManager extends BaseEntityManager
 {
 
     public function __construct(EntityManager $em, $class){
