@@ -1,0 +1,10 @@
+{% import _self as labels %}
+{% macro categoryName(category) %}
+
+	{% if category != null %}
+{% if category.parent != null %}
+		<span >{{ category.parent.name }}</span>
+{% endif %}
+	{% endif %}
+{% endmacro %}
+{{ labels.categoryName(data) }}
