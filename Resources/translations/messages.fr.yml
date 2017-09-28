@@ -4,4 +4,6 @@ miky_category:
     category: Catégorie
     choose_category: Choisir une categorie
     position: Position
+    use_as_category_group: Utiliser comme un groupe de catégorie
+    no_category_available: Aucune catégorie disponible
 

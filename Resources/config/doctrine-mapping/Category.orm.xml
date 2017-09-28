@@ -7,6 +7,7 @@
     <mapped-superclass name="Miky\Bundle\CategoryBundle\Model\Category">
 
         <field name="position" type="integer" column="position" nullable="true"/>
+        <field name="asCategoryGroup" type="boolean" column="asCategoryGroup" nullable="true"/>
         <field name="name" type="string" column="name" length="180" />
         <field name="slug" type="string" column="slug" length="180" nullable="true"/>
         <field name="icon" type="string" column="icon" length="80" nullable="true"/>

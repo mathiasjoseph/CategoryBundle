@@ -12,6 +12,7 @@ namespace Miky\Bundle\CategoryBundle\Form\Type;
 use Doctrine\ORM\EntityRepository;
 use Miky\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -39,13 +40,17 @@ class CategoryAdminType  extends AbstractResourceType
                 "placeholder" => "miky_category.no_category",
                 "required" => false,
                 'query_builder' => function (EntityRepository $er) use ($id) {
+                    $q = $er->createQueryBuilder('c');
                     if ($id !== null) {
-                        $q = $er->createQueryBuilder('c');
                         $q->setParameter("id", $id)
                             ->where('c.id != :id');
                     }
                     return $q;
                 },
+            ))
+            ->add("asCategoryGroup", CheckboxType::class,array(
+                "label" => "miky_category.use_as_category_group",
+                "required" => false
             ))
             ->add("icon", TextType::class,array(
                 "label" => "miky_core.icon",

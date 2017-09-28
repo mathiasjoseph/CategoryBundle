@@ -22,6 +22,9 @@ class CategoryManager extends BaseEntityManager
     public function getCategories(){
         return $this->getRepository()->findAll();
     }
+    public function getCategoriesByAsCategoryGroup(){
+        return $this->getRepository()->findBy(array("asCategoryGroup" => true), array("name" => 'ASC'));
+    }
 
     public function getCategory($id){
         return $this->getRepository()->find($id);

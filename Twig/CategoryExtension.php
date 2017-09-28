@@ -27,13 +27,20 @@ class CategoryExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('miky_category_get_categories', array($this, 'getCategories')),
+            new \Twig_SimpleFunction('miky_get_categories', array($this, 'getCategories')),
+            new \Twig_SimpleFunction('miky_get_categories_by_as_group', array($this, 'getCategoriesByAsCategoryGroup'))
         );
     }
 
     public function getCategories($alias)
     {
         $categories = $this->categoryProvider->getManager($alias)->getCategories();
+        return $categories;
+    }
+
+    public function getCategoriesByAsCategoryGroup($alias)
+    {
+        $categories = $this->categoryProvider->getManager($alias)->getCategoriesByAsCategoryGroup();
         return $categories;
     }
 }
